@@ -52,18 +52,21 @@ export declare const UserModel: mongoose.Model<{
 }>;
 export declare const ContentModel: mongoose.Model<{
     userId: mongoose.Types.ObjectId;
+    type?: string | null;
     title?: string | null;
     link?: string | null;
 }, {}, {}, {
     id: string;
 }, mongoose.Document<unknown, {}, {
     userId: mongoose.Types.ObjectId;
+    type?: string | null;
     title?: string | null;
     link?: string | null;
 }, {
     id: string;
 }, mongoose.DefaultSchemaOptions> & Omit<{
     userId: mongoose.Types.ObjectId;
+    type?: string | null;
     title?: string | null;
     link?: string | null;
 } & {
@@ -74,16 +77,19 @@ export declare const ContentModel: mongoose.Model<{
     id: string;
 }, mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
     userId: mongoose.Types.ObjectId;
+    type?: string | null;
     title?: string | null;
     link?: string | null;
 }, mongoose.Document<unknown, {}, {
     userId: mongoose.Types.ObjectId;
+    type?: string | null;
     title?: string | null;
     link?: string | null;
 }, {
     id: string;
 }, mongoose.DefaultSchemaOptions> & Omit<{
     userId: mongoose.Types.ObjectId;
+    type?: string | null;
     title?: string | null;
     link?: string | null;
 } & {
@@ -94,6 +100,7 @@ export declare const ContentModel: mongoose.Model<{
     id: string;
 }, unknown, {
     userId: mongoose.Types.ObjectId;
+    type?: string | null;
     title?: string | null;
     link?: string | null;
 } & {
@@ -102,6 +109,7 @@ export declare const ContentModel: mongoose.Model<{
     __v: number;
 }>, {
     userId: mongoose.Types.ObjectId;
+    type?: string | null;
     title?: string | null;
     link?: string | null;
 } & {

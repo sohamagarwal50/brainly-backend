@@ -4,8 +4,10 @@ import { ContentModel, LinkModel, UserModel } from "./db.js";
 import { userMiddleWare } from "./middlewares.js";
 import { random } from "./utils.js";
 const jwt_seceret = "123123";
+import cors from "cors";
 const app = express();
 app.use(express.json());
+app.use(cors());
 app.post("/api/v1/signup", async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
@@ -54,13 +56,13 @@ app.post("/api/v1/signin", async (req, res) => {
 app.post("/api/v1/content", userMiddleWare, async (req, res) => {
     const link = req.body.link;
     const title = req.body.title;
-    console.log(link);
+    const typ = req.body.type;
+    console.log(req.body);
     try {
         await ContentModel.create({
             "title": title,
             "link": link,
-            //@ts-ignore
-            "tags": [],
+            "type": typ,
             "userId": req.userId
         });
         res.json({
@@ -76,12 +78,14 @@ app.post("/api/v1/content", userMiddleWare, async (req, res) => {
 });
 app.get("/api/v1/content", userMiddleWare, async (req, res) => {
     const userId = req.userId;
+    console.log(userId);
     const content = await ContentModel.find({
         userId: userId
     }).populate("userId", "username");
     res.json({
         content: content
     });
+    console.log(content);
 });
 app.delete("/api/v1/content", userMiddleWare, async (req, res) => {
     const contentId = req.body.contentId;
